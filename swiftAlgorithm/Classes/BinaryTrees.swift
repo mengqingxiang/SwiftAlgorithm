@@ -15,6 +15,7 @@ public protocol BinaryTreeProtocol {
     
     func size()-> Int
     func isEmpty()-> Bool
+    func depth()-> Int
     func add(element:Element)
     func remove(element:Element)
     func preorderTraverse()
@@ -121,6 +122,32 @@ extension BinaryTrees {
                 queue.append(rightNode)
             }
         }
+    }
+    
+    public func depth() -> Int {
+        guard let rootNode = root else { return 0 }
+        var levelSize = 1
+        var depth = 1
+        var queue:[Node] = [Node<E>]()
+        queue.append(rootNode)
+        
+        while(!queue.isEmpty) {
+            let node = queue.removeFirst()
+            levelSize -= 1
+            if let leftNode = node.left{
+                queue.append(leftNode)
+            }
+            
+            if let rightNode = node.right{
+                queue.append(rightNode)
+            }
+            
+            if levelSize == 0 {
+                levelSize = queue.count
+                depth += 1
+            }
+        }
+        return depth
     }
     
 }
