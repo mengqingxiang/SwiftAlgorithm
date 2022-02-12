@@ -1,0 +1,16 @@
+PODS:
+  - swiftAlgorithm (0.1.0)
+
+DEPENDENCIES:
+  - swiftAlgorithm (from `../`)
+
+EXTERNAL SOURCES:
+  swiftAlgorithm:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  swiftAlgorithm: b1b0c6706e558457004925b65d3c3b5529eef705
+
+PODFILE CHECKSUM: a327462ed83d155c325ed4b1620689bebfa0411a
+
+COCOAPODS: 1.10.1

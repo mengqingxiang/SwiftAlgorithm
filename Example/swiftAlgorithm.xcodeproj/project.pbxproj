@@ -40,10 +40,10 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		76666AC71D3082729C96553D /* Pods_swiftAlgorithm_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftAlgorithm_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EABDE45FAA354DE4445C136 /* swiftAlgorithm.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = swiftAlgorithm.podspec; path = ../swiftAlgorithm.podspec; sourceTree = "<group>"; };
+		8EABDE45FAA354DE4445C136 /* swiftAlgorithm.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = swiftAlgorithm.podspec; path = ../swiftAlgorithm.podspec; sourceTree = "<group>"; };
 		9FDF76F465F2CF92E05CAF69 /* Pods-swiftAlgorithm_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftAlgorithm_Tests.debug.xcconfig"; path = "Target Support Files/Pods-swiftAlgorithm_Tests/Pods-swiftAlgorithm_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		A40D76129552C4DBCF44C492 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		B13368AAF8F95B61799789EC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		A40D76129552C4DBCF44C492 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B13368AAF8F95B61799789EC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D5C30F4BEEFA2CD0D519416B /* Pods-swiftAlgorithm_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftAlgorithm_Example.debug.xcconfig"; path = "Target Support Files/Pods-swiftAlgorithm_Example/Pods-swiftAlgorithm_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E215F523B1EC83DE8123D890 /* Pods-swiftAlgorithm_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftAlgorithm_Example.release.xcconfig"; path = "Target Support Files/Pods-swiftAlgorithm_Example/Pods-swiftAlgorithm_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F9D5B92361B23B51751F4B45 /* Pods-swiftAlgorithm_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftAlgorithm_Tests.release.xcconfig"; path = "Target Support Files/Pods-swiftAlgorithm_Tests/Pods-swiftAlgorithm_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,7 +156,6 @@
 				9FDF76F465F2CF92E05CAF69 /* Pods-swiftAlgorithm_Tests.debug.xcconfig */,
 				F9D5B92361B23B51751F4B45 /* Pods-swiftAlgorithm_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -213,10 +212,13 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = DPY5XR2ZRP;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Manual;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 6D28QC79YM;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -227,6 +229,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -478,11 +481,16 @@
 			baseConfigurationReference = D5C30F4BEEFA2CD0D519416B /* Pods-swiftAlgorithm_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development: Longlong Zhang (X9BP58N49D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Longlong Zhang (X9BP58N49D)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DPY5XR2ZRP;
 				INFOPLIST_FILE = swiftAlgorithm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.odaily.news;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = dev;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -493,11 +501,14 @@
 			baseConfigurationReference = E215F523B1EC83DE8123D890 /* Pods-swiftAlgorithm_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DPY5XR2ZRP;
 				INFOPLIST_FILE = swiftAlgorithm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.odaily.news;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = dev;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -507,6 +518,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9FDF76F465F2CF92E05CAF69 /* Pods-swiftAlgorithm_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 6D28QC79YM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -529,6 +541,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F9D5B92361B23B51751F4B45 /* Pods-swiftAlgorithm_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 6D28QC79YM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
