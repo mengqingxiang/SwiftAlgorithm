@@ -165,7 +165,7 @@ extension BinaryTrees {
 }
 
 extension BinaryTrees{
-    fileprivate class Node<E> {
+    internal class Node<E> {
         var left:Node?
         var right:Node?
         var parent:Node?
