@@ -37,9 +37,26 @@ public class SelectSort<E:Comparable>:SortAbstract<E> {
     }
 }
 
+public class insetSort1<E:Comparable>:SortAbstract<E> {
+    override internal func sort()->[E]? {
+//        guard var array = self.array else { return nil }
+        for idx in 1..<array.count {
+            let insetValue = array[idx]
+            var cur = idx
+            while cur > 0,array[cur-1]>insetValue {
+                array[cur] = array[cur-1]
+                cur -= 1
+            }
+            array[cur] = insetValue
+        }
+        return array
+    }
+    
+}
+
 public class insetSort<E:Comparable>:SortAbstract<E> {
     override internal func sort()->[E]? {
-        guard var array = self.array else { return nil }
+//        guard var array = self.array else { return nil }
         for idx in 1..<array.count {
             let insetValue = array[idx]
             var cur = idx
@@ -89,39 +106,80 @@ public class insetSort<E:Comparable>:SortAbstract<E> {
 
 
 
-public func bubbleSort(_ array:[Int]?)->[Int]? {
-    guard let arr = array else { return nil }
-    var array = arr
-    for var idx in 0..<array.count {
-        var endIndex = array.count
-        for jdx in 1..<array.count-idx {
-            if array[jdx] < array[jdx-1] {
-                let temp = array[jdx]
-                array[jdx] = array[jdx-1]
-                array[jdx-1] = temp
-                endIndex = jdx
+public class QuickSort<E:Comparable>:SortAbstract<E> {
+    override internal func sort()->[E]? {
+        sort(begin: 0, end: array.count)
+        return array
+    }
+    
+    private func sort(begin:Int,end:Int) {
+        if end - begin < 2 { return }
+        let middleIndex = poivetIndex(begin: begin, end: end)
+        sort(begin: begin, end: middleIndex)
+        sort(begin: middleIndex+1, end: end)
+    }
+    
+    private func poivetIndex(begin:Int,end:Int)->Int {
+        var statrIndex:Int = begin, endIndex:Int = end-1
+        let poiteValue = array[begin]
+        while statrIndex < endIndex {
+            while statrIndex < endIndex {
+                if cmp(poiteValue, ele1: array[endIndex]) == .orderedAscending {
+                    array[statrIndex] = array[endIndex]
+                    statrIndex += 1
+                    break
+                }
+                endIndex -= 1
+            }
+            
+            while statrIndex < endIndex {
+                if cmp(poiteValue, ele1: array[statrIndex]) == .orderedDescending {
+                    array[endIndex] = array[statrIndex]
+                    endIndex -= 1
+                    break
+                }
+                statrIndex += 1
             }
         }
-        idx = endIndex
+        array[statrIndex] = poiteValue
+        return statrIndex
     }
-    return array
 }
 
-public func selectSort(_ array:[Int]?)->[Int]? {
-    guard let arr = array else { return nil }
-    var array = arr
-    for idx in 0..<array.count {
-        var max = 0
-        for jdx in 1..<array.count-idx {
-            if array[max] < array[jdx] {
-                max = jdx
-            }
+
+public class mergeSort<E:Comparable>:SortAbstract<E> {
+    override internal func sort()->[E]? {
+        sort(begin: 0, end: array.count)
+        return array
+    }
+    
+    private func sort(begin:Int,end:Int) {
+        if end - begin < 2 { return }
+        let middle:Int = (end+begin)/2
+        sort(begin: begin, end: middle)
+        sort(begin: middle, end: end)
+        merge(begin: begin, minddle: middle, end: end)
+    }
+    
+    private func merge(begin:Int,minddle:Int, end:Int) {
+        var tempArray = [E]()
+        for num in begin...minddle {
+            tempArray.append(array[num])
         }
         
-        let lastIndex = array.count-idx-1
-        let temp = array[lastIndex]
-        array[lastIndex] = array[max]
-        array[max] = temp
+        var leftIndex = 0,rightIndex = minddle
+        var writeIndex = begin
+        let length = minddle - begin
+        
+        while leftIndex < length {
+            if rightIndex<end,cmp(tempArray[leftIndex], ele1: array[rightIndex]) == .orderedAscending {
+                array[writeIndex] = array[rightIndex]
+                rightIndex += 1
+            }else {
+                array[writeIndex] = tempArray[leftIndex]
+                leftIndex += 1
+            }
+            writeIndex += 1
+        }
     }
-    return array
 }

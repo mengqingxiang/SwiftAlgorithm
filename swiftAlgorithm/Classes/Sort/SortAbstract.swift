@@ -26,7 +26,7 @@ public class SortAbstract<E> where E:Comparable {
         var a = sort()
         let endTime = Date().timeIntervalSince1970
         time = endTime - beginTime
-        return a
+        return array
     }
     
     internal func sort()->[E]? {

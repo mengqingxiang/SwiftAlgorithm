@@ -32,18 +32,18 @@ class ViewController: UIViewController {
 //            return false
 //        }
         
-        var randomValues:[Int]? = [Int]()
-        for _ in 0...20000 {
+        var randomValues:[Int] = [Int]()
+        for _ in 0..<10 {
             let randomNum = Int(arc4random() % 1000)
-            randomValues?.append(randomNum)
+            randomValues.append(randomNum)
         }
         
-    
-//        print(randomValues)
-//        print(insetSort<Int>().binarySearch(array: randomValues!, value: 4))
-        let sorts = [insetSort<Int>()]
+        let sorts = [QuickSort<Int>(),BubbleSort<Int>(),SelectSort<Int>(),insetSort<Int>(),mergeSort<Int>()]
         for task in sorts {
-            task.sort(randomValues)
+            let arr = task.sort(randomValues)
+            if randomValues.count <= 100 {
+                print(arr!)
+            }
             print(task)
         }
     }
