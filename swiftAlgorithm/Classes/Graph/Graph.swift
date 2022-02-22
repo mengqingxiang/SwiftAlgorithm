@@ -11,6 +11,7 @@
 public protocol GraphProtocol {
     associatedtype E
     associatedtype V
+    typealias VisitorClosure = ((_ element:E?)->Bool)
     
     var vertexSize:Int { get }
     var edgeSize:Int { get }
@@ -19,6 +20,9 @@ public protocol GraphProtocol {
     func addVertex(element:E)
     func removeVertex(element:E)
     func removeEdge(from:E,to:E)
+    
+    func bfs(element:E,traverCosure:VisitorClosure?)
+    func dfs(element:E,traverCosure:VisitorClosure?)
 }
 
 
@@ -51,14 +55,14 @@ internal class Edge<E,V>where V:Hashable,E:Hashable {
     var to:Vertex<E,V>?
     var weight:V?
     
-    init(from:Vertex<E,V>,to:Vertex<E,V>,weight:V) {
+    init(from:Vertex<E,V>,to:Vertex<E,V>,weight:V?) {
         self.from = from
         self.to = to
         self.weight = weight
     }
 }
 
-extension Edge:Hashable {
+extension Edge:Hashable,CustomStringConvertible {
     static func == (lhs: Edge<E, V>, rhs: Edge<E, V>) -> Bool {
         return lhs.from == rhs.from && lhs.to == rhs.to
     }
@@ -66,5 +70,9 @@ extension Edge:Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(from)
         hasher.combine(to)
+    }
+    
+    var description: String {
+        return "\(from!.element)-> \(to!.element)"
     }
 }
